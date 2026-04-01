@@ -10,8 +10,8 @@ def ingest_taxi():
     
     print(f"Rows: {len(df)}")
     print(f"Columns: {list(df.columns)}")
-    print(f"\nFirst 3 rows:")
-    print(df.head(3))
+    print(f"\nFirst 4 rows:")
+    print(df.head(4))
 
 if __name__ == "__main__":
     ingest_taxi()
