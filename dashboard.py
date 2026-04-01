@@ -21,8 +21,15 @@ st.divider()
 
 # Chart 1 - Daily trips over time
 st.subheader("Daily Trips — January 2026")
-fig1 = px.line(df, x="date", y="total_trips", color="weather_label",
-               title="Trips per Day by Weather Condition")
+fig1 = px.bar(df, x="date", y="total_trips", color="weather_label",
+              title="Daily Trips Colored by Weather Condition",
+              color_discrete_map={
+                  "clear": "#FFD700",
+                  "cloudy": "#A9A9A9",
+                  "rainy": "#4169E1",
+                  "snowy": "#00BFFF"
+              })
+fig1.update_layout(showlegend=True)
 st.plotly_chart(fig1, use_container_width=True)
 
 # Chart 2 - Revenue by weather
