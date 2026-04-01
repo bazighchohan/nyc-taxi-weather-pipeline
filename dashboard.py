@@ -7,7 +7,7 @@ st.set_page_config(page_title="NYC Taxi + Weather Analysis", layout="wide")
 st.title("NYC Taxi + Weather Pipeline")
 st.markdown("**Business question:** Does weather affect NYC taxi demand and revenue?")
 
-df = pd.read_parquet("data/gold/taxi_weather_gold.parquet")
+df = pd.read_csv("data/gold/taxi_weather_gold.csv")
 df["date"] = pd.to_datetime(df["date"])
 
 # Top metrics
