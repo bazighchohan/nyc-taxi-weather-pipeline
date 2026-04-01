@@ -30,6 +30,7 @@ fig1 = px.bar(df, x="date", y="total_trips", color="weather_label",
                   "snowy": "#00BFFF"
               })
 fig1.update_layout(showlegend=True)
+fig1.update_traces(width=60000000)
 st.plotly_chart(fig1, use_container_width=True)
 
 # Chart 2 - Revenue by weather
