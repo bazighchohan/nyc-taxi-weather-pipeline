@@ -28,6 +28,13 @@ def build_gold():
     
     print(f"Gold rows: {len(gold)}")
     print(gold.head(10))
+
+    # Quality checks
+    assert len(gold) == 31, "ERROR: Expected 31 daily rows"
+    assert gold["total_trips"].min() > 0, "ERROR: Zero trips on a day"
+    assert gold["weather_label"].isnull().sum() == 0, "ERROR: Unmatched dates in join"
+    assert gold["total_revenue"].min() > 0, "ERROR: Zero revenue on a day"
+    print("Quality checks passed ✓")
     
     gold.to_parquet(f"{GOLD_PATH}taxi_weather_gold.parquet", index=False)
     print(f"Saved to {GOLD_PATH}taxi_weather_gold.parquet")

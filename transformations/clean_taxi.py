@@ -31,6 +31,15 @@ def clean_taxi():
     ]]
     
     print(f"Rows after cleaning: {len(df)}")
+
+    # Quality checks
+    assert len(df) > 0, "ERROR: No rows after cleaning"
+    assert df["date"].isnull().sum() == 0, "ERROR: Null dates found"
+    assert df["fare_amount"].min() > 0, "ERROR: Negative fares found"
+    assert df["trip_distance"].min() > 0, "ERROR: Zero distance trips found"
+    print("Quality checks passed ✓")
+
+    
     df.to_parquet(f"{SILVER_PATH}taxi_clean.parquet", index=False)
     print(f"Saved to {SILVER_PATH}taxi_clean.parquet")
 

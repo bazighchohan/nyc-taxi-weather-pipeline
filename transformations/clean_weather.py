@@ -33,6 +33,13 @@ def clean_weather():
     
     print(f"Rows after cleaning: {len(df)}")
     print(df.head(5))
+
+    # Quality checks
+    assert len(df) > 0, "ERROR: No rows after cleaning"
+    assert df["date"].isnull().sum() == 0, "ERROR: Null dates found"
+    assert df["temp_max_c"].isnull().sum() == 0, "ERROR: Null temperatures found"
+    assert df["weather_label"].isnull().sum() == 0, "ERROR: Null weather labels found"
+    print("Quality checks passed ✓")
     
     df.to_parquet(f"{SILVER_PATH}weather_clean.parquet", index=False)
     print(f"Saved to {SILVER_PATH}weather_clean.parquet")
