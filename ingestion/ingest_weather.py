@@ -35,7 +35,7 @@ def ingest_weather(start_date="2026-01-01", end_date="2026-01-31"):
     df.to_json(output_path, orient="records", indent=2, date_format="iso")
     
     print(f"Rows: {len(df)}")
-    print(df.head(5))
+    print(df.head(6))
     print(f"Saved to {output_path}")
 
 if __name__ == "__main__":
